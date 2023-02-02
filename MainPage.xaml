@@ -8,33 +8,21 @@
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
-
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
-
+            <Picker.Items x:Name="LanguagePicker" Title="Выберите город:" FontSize="Medium"
+                          SelectedIndexChanged="PickerSelectedIndexChanged">
+                 <Picker.Items>
+                    <!--<x:String>Орехово-Зуево</x:String>
+                    <x:String>Сочи</x:String>-->
+                    <!--x:String>Мурманск</x:String>-->
+                 </Picker.Items>
+            </Picker>
+            <Button Text="Узнать погоду" Command="{Binding LoadDataCommand}" />
+            <Label FontSize="Medium" Text="Данные на дату:" />
+            <Label FontSize="Medium" FontAttributes="Bold" Text="Binding Time" />
+            <Label FontSize="Medium" Text="Температура" />
+            <Label FontSize="Medium" FontAttributes="Bold" Text="Binding Temperature" />
+            <Label FontSize="Medium" Text="Скорость ветра" />
+            <Label FontSize="Medium" FontAttributes="Bold" Text="Binding Windspeed" />
         </VerticalStackLayout>
     </ScrollView>
 

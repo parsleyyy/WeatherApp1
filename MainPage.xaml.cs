@@ -1,4 +1,7 @@
-﻿namespace WeatherApp1;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace WeatherApp1;
 
 public partial class MainPage : ContentPage
 {
