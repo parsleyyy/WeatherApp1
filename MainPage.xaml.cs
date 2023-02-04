@@ -5,23 +5,41 @@ namespace WeatherApp1;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+	City MyCity;
+	List<City> data;
 
+	CityViewModel viewModel;
 	public MainPage()
 	{
 		InitializeComponent();
+		LoadCitis();
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
+	public async void LoadCities()
 	{
-		count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
+		// добавление городов
+		string json = await SecureStorage.GetAsync("City");
+		if (!string.IsNullOrEmpty(json)) 
+		{
+			data = JsonConvert.DeserializeObject<CityViewModel>(json);
+			foreach (var track in data)
+			{
+				languagePicker.Items.Add(track.Title);
+			}
+		}
+	}
+	private void PickerSelectedIndexChanged(object sender, EventArgs e)
+	{
+		string name = languagePicker.SelectedItem.ToString();
+		foreach (var track in data)
+		{
+			if (name == track.Title)
+			{
+				DisplayAlert("Уведомление", track.Title + "lat:" +track.Latitude.ToString()
+					+ "lon:" + track.Longitude.ToString() "OK");
+				// установка контекста данных
+			}
+		}
 	}
 }
 
